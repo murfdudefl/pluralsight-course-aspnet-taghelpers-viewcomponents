@@ -1,0 +1,86 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+}
+
+
+@*<company name="Microsoft">
+			<employee name="Taylor Mullen"
+					  title="Software Engineer II">
+			</employee>
+			<employee name="Damian Edwards"
+					  title="Principal Program Manager">
+			</employee>
+			<employee name="Eilon Lipton"
+					  title="Principal Group Manager">
+			</employee>
+		</company>
+
+		<company name="Google">
+			<employee name="Larry Page"
+					  title="Engineer Inventor">
+			</employee>
+			<employee name="Sergey Brin"
+					  title="Computer Scientist">
+			</employee>
+	</company>*@
+
+<tab active-page="Sessions">
+	<tab-item title="Home"></tab-item>
+	<tab-item title="Speakers"></tab-item>
+	<tab-item title="Sessions"></tab-item>
+	<tab-item title="Registration"></tab-item>
+</tab>
+
+@*<time-since></time-since>*@
+@{
+	List<Speaker> speakers = new List<Speaker>
+{
+			new Speaker
+			{
+				SpeakerId = 187,
+				Company = "ABC Company",
+				TrackName = "JavaScript",
+				UserFirstName = "Jay",
+				UserLastName = "Pitch"
+			},
+			new Speaker
+			{
+				SpeakerId = 823,
+				Company = "Microsoft",
+				TrackName = "JavaScript",
+				UserFirstName = "Ted",
+				UserLastName = "Greenfield"
+			},
+			new Speaker
+			{
+				SpeakerId = 1124,
+				Company = "Google",
+				TrackName = "JavaScript",
+				UserFirstName = "Michael",
+				UserLastName = "Freeling"
+			}
+		};
+}
+<div class="container">
+	<speaker-track track="JavaScript">
+		@await Component.InvokeAsync("SpeakerCard", speakers[0])
+		@await Component.InvokeAsync("SpeakerCard", speakers[1])
+		@await Component.InvokeAsync("SpeakerCard", speakers[2])
+	</speaker-track>
+</div>
+
+<div class="container">
+	<speaker-track track="JavaScript">
+		<vc:speaker-card speaker="speakers[0]"></vc:speaker-card>
+		<vc:speaker-card speaker="speakers[1]"></vc:speaker-card>
+		<vc:speaker-card speaker="speakers[2]"></vc:speaker-card>
+	</speaker-track>
+</div>
+
+@*<auto-price make="Chevy" model="Camaro">Undefined</auto-price>
+		<auto-price make="Dodge" model="Dakota">Undefined</auto-price>
+		<auto-price make="Hyundai" model="Sonata">Undefined</auto-price>
+		<auto-price make="Rolls Royce">Undefined</auto-price>
+		<auto-price make="Chevy" model="Corvette">Undefined</auto-price>
+	<auto-price model="Corvette">Undefined</auto-price>*@
+
